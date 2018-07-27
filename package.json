@@ -1,0 +1,84 @@
+{
+  "name": "vfile-reporter-github-checks",
+  "version": "2.0.0",
+  "description": "Format vfile results as GitHub checks annotations",
+  "main": "vfile-reporter-github-checks.js",
+  "files": [
+    "vfile-reporter-github-checks.js"
+  ],
+  "scripts": {
+    "precommit": "lint-staged",
+    "test": "eslint . && jest",
+    "format": "prettier --write *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vfile/vfile-reporter-github-checks.git"
+  },
+  "keywords": [
+    "vfile",
+    "folder",
+    "reporter"
+  ],
+  "author": {
+    "name": "Christian Murphy",
+    "email": "Christian.Murphy.42@gmail.com",
+    "url": "https://github.com/ChristianMurphy"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vfile/vfile-reporter-github-checks/issues"
+  },
+  "homepage": "https://github.com/vfile/vfile-reporter-github-checks#readme",
+  "devDependencies": {
+    "eslint": "^5.0.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-node": "^7.0.0",
+    "husky": "^0.14.3",
+    "jest": "^23.0.0",
+    "lint-staged": "^7.0.5",
+    "prettier": "^1.11.1",
+    "vfile": "^3.0.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "globals": {
+      "jest/globals": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018
+    },
+    "plugins": [
+      "jest",
+      "node"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:jest/recommended",
+      "plugin:node/recommended"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "renovate": {
+    "extends": [
+      "schedule:weekly",
+      "group:all",
+      ":rebaseStalePrs",
+      ":preserveSemverRanges",
+      ":semanticPrefixChore",
+      ":ignoreUnstable",
+      ":renovatePrefix"
+    ]
+  }
+}
