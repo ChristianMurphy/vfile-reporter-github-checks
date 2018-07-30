@@ -128,3 +128,21 @@ test("two files, two messages", () => {
   ];
   expect(result).toEqual(expectation);
 });
+
+test("three files, one message", () => {
+  const test1 = vfile({ path: "~/test1.md" });
+  const test2 = vfile({ path: "~/test2.md" });
+  const test3 = vfile({ path: "~/test3.md" });
+  test2.message("example", { line: 2 });
+  const result = reporter([test1, test2, test3], { raw: true });
+  const expectation = [
+    {
+      filename: "~/test2.md",
+      start_line: 2,
+      end_line: null,
+      message: "example",
+      warning_level: "warning"
+    }
+  ];
+  expect(result).toEqual(expectation);
+});
