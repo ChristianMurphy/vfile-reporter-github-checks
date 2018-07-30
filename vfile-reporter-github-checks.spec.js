@@ -103,3 +103,28 @@ test("message no location", () => {
   ];
   expect(result).toEqual(expectation);
 });
+
+test("two files, two messages", () => {
+  const test1 = vfile({ path: "~/test1.md" });
+  const test2 = vfile({ path: "~/test2.md" });
+  test1.message("example", { line: 1 });
+  test2.message("example", { line: 2 });
+  const result = reporter([test1, test2], { raw: true });
+  const expectation = [
+    {
+      filename: "~/test1.md",
+      start_line: 1,
+      end_line: null,
+      message: "example",
+      warning_level: "warning"
+    },
+    {
+      filename: "~/test2.md",
+      start_line: 2,
+      end_line: null,
+      message: "example",
+      warning_level: "warning"
+    }
+  ];
+  expect(result).toEqual(expectation);
+});
